@@ -20,7 +20,7 @@ struct SessionPerformanceModele {
     var nbBlocTerminate: Int
     var nbBlocsTry: Int
     var nbBlocsDA: Int
-    var nbBloscDE: Int
+    var nbBlocsDE: Int
     var nbBlocsFlashed: Int
     var nbTry:Int
     var levelMax: Int
