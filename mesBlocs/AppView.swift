@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  mesBlocs
-//
-//  Created by clement leclerc on 03/09/2025.
-//
-
 import SwiftUI
 
 struct AppView: View {
