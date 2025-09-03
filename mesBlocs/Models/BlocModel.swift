@@ -1,10 +1,3 @@
-//
-//  BlocModel.swift
-//  mesBlocs-app
-//
-//  Created by clement leclerc on 12/08/2025.
-//
-
 import Foundation
 import SwiftData
 
@@ -32,13 +25,7 @@ struct BlocDto: Identifiable, Codable, Equatable {
     var terminate: Bool
     var DE: Bool
     var nbTry: Int
-    var session: SessionModele? = nil // Ne pas sérialiser la session
     var score: Double
-    
-    // Custom coding keys pour exclure la session de la sérialisation
-    enum CodingKeys: String, CodingKey {
-        case id, level, terminate, DE, nbTry, score
-    }
     
     // Implémentation d'Equatable (exclut la session de la comparaison)
     static func == (lhs: BlocDto, rhs: BlocDto) -> Bool {
@@ -57,5 +44,15 @@ func convertToModel(dto:BlocDto) -> BlocModel {
             terminate: dto.terminate,
             DE: dto.DE,
             nbTry: dto.nbTry
+    )
+}
+
+func convertToDto(model:BlocModel) -> BlocDto {
+    return BlocDto (
+        level: model.level,
+        terminate: model.terminate,
+        DE: model.DE,
+        nbTry: model.nbTry,
+        score: calculateBlocScore(level: model.level, nbTry: model.nbTry, DE: model.DE, terminate: model.terminate),
     )
 }

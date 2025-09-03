@@ -1,10 +1,3 @@
-//
-//  SessionModels.swift
-//  mesBlocs-app
-//
-//  Created by clement leclerc on 10/08/2025.
-//
-
 import Foundation
 import SwiftData
 
@@ -18,11 +11,7 @@ class SessionModele {
     init(date: Date) {
         self.date = date
     }
-    
-    
-    
 }
-
 
 struct SessionPerformanceModele {
     
@@ -53,8 +42,6 @@ struct SessionDto: Identifiable {
     var date: Date
     var perf: SessionPerformanceModele
 }
-
-
 
 func convertToDto (session:SessionModele) -> SessionDto {
     return SessionDto(
