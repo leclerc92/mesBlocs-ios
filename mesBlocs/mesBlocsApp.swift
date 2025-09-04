@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+@available(iOS 26.0, *)
 @main
 struct mesBlocsApp: App {
     

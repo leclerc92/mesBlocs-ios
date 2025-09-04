@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 26.0, *)
 struct BlocForm: View {
     
     @State var bloc: BlocDto
@@ -136,10 +137,14 @@ struct BlocForm: View {
         score: 0
     )
     
-    BlocForm(bloc: bloc) { updatedBloc in
-        print("Bloc updated: \(updatedBloc)")
+    if #available(iOS 26.0, *) {
+        BlocForm(bloc: bloc) { updatedBloc in
+            print("Bloc updated: \(updatedBloc)")
+        }
+        .padding()
+    } else {
+        // Fallback on earlier versions
     }
-    .padding()
 }
 
 

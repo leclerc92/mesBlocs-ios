@@ -15,16 +15,16 @@ struct StatsView: View {
     private var sessions: [SessionModele]
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Group {
                 if sessions.isEmpty {
-                    EmptyStateView()
+                    EmptyStateView(addSessionAction: {})
                 } else {
                     
                 }
             }
-            .navigationTitle("Création d'une session")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationTitle("Stats des sessions")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

@@ -11,30 +11,19 @@ import SwiftData
 struct SessionListView: View {
     
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \SessionModele.date, order: .reverse) 
+    @Query(sort: \SessionModele.date, order: .reverse)
     private var sessions: [SessionModele]
     
     var body: some View {
-        NavigationView {
-            Group {
-                if sessions.isEmpty {
-                    EmptyStateView()
-                } else {
-                    sessionListContent
-                }
-            }
-            .navigationTitle("Mes Sessions")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        // TODO: Navigate to NewSessionView
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
+        Group {
+            if sessions.isEmpty {
+                EmptyStateView(addSessionAction: {})
+            } else {
+                sessionListContent
             }
         }
+        .navigationTitle("Mes Sessions")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

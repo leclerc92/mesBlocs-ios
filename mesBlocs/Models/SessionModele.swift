@@ -44,10 +44,15 @@ struct SessionDto: Identifiable {
 }
 
 func convertToDto (session:SessionModele) -> SessionDto {
+    
+    let blocsDto:[BlocDto] = session.blocs.map { bloc in
+            convertToDto(model: bloc)
+    }
+    
     return SessionDto(
         date: session.date,
         perf: calculSessionPerformance(
-            blocs: session.blocs
+            blocs: blocsDto
         )
     )
 }

@@ -1,33 +1,64 @@
 import SwiftUI
 
+@available(iOS 26.0, *)
 struct AppView: View {
     var body: some View {
         TabView {
-            // Onglet Sessions
-            SessionListView()
-                .tabItem {
-                    Image(systemName: "list.bullet.clipboard")
-                    Text("Sessions")
-                }
+            Tab("SESSIONS", systemImage: "list.bullet.rectangle.portrait.fill") {
+                SessionsTabView()
+            }
             
-            // Onglet Statistiques
-            StatsView()
-                .tabItem {
-                    Image(systemName: "chart.bar.fill")
-                    Text("Statistiques")
-                }
+            Tab("STATS", systemImage: "percent") {
+                StatsTabView()
+            }
             
-            // Onglet Nouvelle Session
-            NewSessionView()
-                .tabItem {
-                    Image(systemName: "plus.circle.fill")
-                    Text("Nouvelle")
-                }
+            Tab("NEW", systemImage: "document.badge.plus.fill") {
+                NewSessionTabView()
+            }
         }
-        .accentColor(.orange)
+        .tabViewStyle(.sidebarAdaptable)
+    }
+}
+
+// MARK: - Tab Views
+
+@available(iOS 26.0, *)
+private struct SessionsTabView: View {
+    var body: some View {
+        NavigationStack {
+            SessionListView()
+                .navigationTitle("Sessions")
+                .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}
+
+@available(iOS 26.0, *)
+private struct StatsTabView: View {
+    var body: some View {
+        NavigationStack {
+            StatsView()
+                .navigationTitle("Stats")
+                .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}
+
+@available(iOS 26.0, *)
+private struct NewSessionTabView: View {
+    var body: some View {
+        NavigationStack {
+            NewSessionView()
+                .navigationTitle("Nouvelle Session")
+                .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 
 #Preview {
-    AppView()
+    if #available(iOS 26.0, *) {
+        AppView()
+    } else {
+        // Fallback on earlier versions
+    }
 }

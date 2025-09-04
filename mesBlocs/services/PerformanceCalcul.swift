@@ -29,10 +29,10 @@ func calculateBlocScore(
     return baseScore * tryMultiplier * deversBonus * completionBonus
 }
 
-func calculSessionPerformance(blocs: [BlocModel]) -> SessionPerformanceModele {
+func calculSessionPerformance(blocs: [BlocDto]) -> SessionPerformanceModele {
     
-    let flashedBlocs: [BlocModel] = blocs.filter { $0.terminate && $0.nbTry == 1}
-    let retryedBlocs: [BlocModel] = blocs.filter { $0.nbTry > 1}
+    let flashedBlocs: [BlocDto] = blocs.filter { $0.terminate && $0.nbTry == 1}
+    let retryedBlocs: [BlocDto] = blocs.filter { $0.nbTry > 1}
 
     
     let totalScore = blocs.reduce(0.0) { total, bloc in
